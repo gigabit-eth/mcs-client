@@ -23,15 +23,21 @@ function GitHubIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function TelegramIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor" {...props}>
-      <path d="M15.999 3.093 8.766 15.84a.517.517 0 0 1-.945.047L5.704 13.01a.517.517 0 0 1 .047-.945l11.694-7.218a.517.517 0 0 1 .945.047l3.133 5.971a.517.517 0 0 1-.047.945Z" />
+      <path
+        d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8m3.71 5.442c-.12 1.264-.642 4.335-.907 5.752-.113.6-.332.8-.545.819-.464.042-.816-.307-1.268-.603-.703-.462-1.103-.749-1.784-1.2-.79-.52-.277-.807.171-1.275.12-.122 2.165-1.983 2.204-2.151.006-.023.01-.1-.04-.142-.047-.042-.115-.026-.164-.016q-.105.022-3.374 2.229-.477.33-.868.32c-.287-.007-.835-.162-1.245-.294-.5-.162-.9-.249-.864-.526q.026-.216.597-.442a411 411 0 0 1 4.664-2.01c2.223-.922 2.684-1.084 2.984-1.09a.54.54 0 0 1 .31.093.34.34 0 0 1 .113.217q.025.158.016.319"
+        fill="#FFF"
+      />
     </svg>
   )
 }
 
 function DiscordIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor" {...props}>
-      <path d="M13.54 2.94a1 1 0 0 1 1 1.72l-7.5 13.5a1 1 0 0 1-1.92 0l-3.5-6.5a1 1 0 0 1 1.92-1.12l1.71 3.42 7.5-13.5a1 1 0 0 1 1.78 1Z" />
+    <svg viewBox="0 0 16 13" aria-hidden="true" fill="currentColor" {...props}>
+      <path
+        d="M13.553 1a.04.04 0 0 0-.021-.02 13.2 13.2 0 0 0-3.255-1.01.05.05 0 0 0-.051.025q-.225.406-.406.833a12.2 12.2 0 0 0-3.657 0 8 8 0 0 0-.41-.833.05.05 0 0 0-.052-.024 13.2 13.2 0 0 0-3.26 1.01.05.05 0 0 0-.022.018C.346 4.1-.223 7.12.055 10.104q.003.024.021.038a13.3 13.3 0 0 0 3.995 2.016.05.05 0 0 0 .057-.019q.463-.63.816-1.328a.05.05 0 0 0-.027-.07 9 9 0 0 1-1.249-.596.052.052 0 0 1-.005-.085q.127-.094.247-.193a.05.05 0 0 1 .052-.008c2.618 1.194 5.453 1.194 8.04 0a.05.05 0 0 1 .052.005q.12.101.248.196a.052.052 0 0 1-.006.085 8 8 0 0 1-1.249.593.05.05 0 0 0-.027.07q.36.694.817 1.328a.05.05 0 0 0 .057.02 13.2 13.2 0 0 0 4.005-2.017.05.05 0 0 0 .022-.038c.332-3.447-.56-6.443-2.368-9.102M5.336 8.285c-.789 0-1.437-.724-1.437-1.61 0-.888.637-1.614 1.437-1.614.808 0 1.45.729 1.437 1.61 0 .89-.637 1.614-1.437 1.614m5.317 0c-.79 0-1.437-.724-1.437-1.61 0-.888.634-1.614 1.437-1.614.808 0 1.45.729 1.437 1.61 0 .89-.632 1.614-1.437 1.614"
+        fill="#FFF"
+      />
     </svg>
   )
 }
@@ -51,7 +57,10 @@ function FeedIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor" {...props}>
-      <path d="M9.51762 6.77491L15.3459 0H13.9648L8.90409 5.88256L4.86212 0H0.200195L6.31244 8.89547L0.200195 16H1.58139L6.92562 9.78782L11.1942 16H15.8562L9.51728 6.77491H9.51762ZM7.62588 8.97384L7.00658 8.08805L2.07905 1.03974H4.20049L8.17706 6.72795L8.79636 7.61374L13.9654 15.0075H11.844L7.62588 8.97418V8.97384Z" />
+      <path
+        d="M2.286 0A2.29 2.29 0 0 0 0 2.286v11.428A2.29 2.29 0 0 0 2.286 16h11.428A2.29 2.29 0 0 0 16 13.714V2.286A2.29 2.29 0 0 0 13.714 0zm10.61 3L9.19 7.236 13.55 13h-3.414L7.464 9.504 4.404 13H2.707l3.964-4.532L2.49 3h3.5l2.418 3.196L11.2 3zm-1.35 8.986L5.48 3.96H4.468l6.136 8.025z"
+        fill="#FFF"
+      />
     </svg>
   )
 }
@@ -76,10 +85,17 @@ export function Intro() {
       <div className="mt-8 flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-2 lg:justify-start">
         <IconLink
           href="https://discord.gg/VAtUcQA3JK"
-          icon={XIcon}
+          icon={DiscordIcon}
           className="flex-none"
         >
           Discord
+        </IconLink>
+        <IconLink
+          href="https://t.me/+jRvk6F60hRwxNWMx"
+          icon={TelegramIcon}
+          className="flex-none"
+        >
+          Telegram
         </IconLink>
         <IconLink
           href="https://x.com/micronstrategy"
@@ -87,13 +103,6 @@ export function Intro() {
           className="flex-none"
         >
           Twitter
-        </IconLink>
-        <IconLink
-          href="https://t.me/+jRvk6F60hRwxNWMx"
-          icon={XIcon}
-          className="flex-none"
-        >
-          Telegram
         </IconLink>
       </div>
     </>

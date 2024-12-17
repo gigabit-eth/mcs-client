@@ -84,19 +84,33 @@ function Star({
 
     let delay = Math.random() * 2
 
+    // Calculate end position - moving diagonally down and right
+    const endX = cx + 100
+    const endY = cy + 100
+
     let animations = [
-      animate(groupRef.current, { opacity: 1 }, { duration: 4, delay }),
+      animate(
+        groupRef.current,
+        { opacity: [0, 1, 0] },
+        {
+          duration: 2,
+          delay,
+          repeat: Infinity,
+        },
+      ),
       animate(
         ref.current,
         {
+          cx: [cx, endX],
+          cy: [cy, endY],
           opacity: dim ? [0.2, 0.5] : [1, 0.6],
           scale: dim ? [1, 1.2] : [1.2, 1],
         },
         {
           delay,
-          duration: Math.random() * 2 + 2,
-          direction: 'alternate',
+          duration: 2,
           repeat: Infinity,
+          easing: 'linear',
         },
       ),
     ]
@@ -106,10 +120,20 @@ function Star({
         animation.cancel()
       }
     }
-  }, [dim])
+  }, [dim, cx, cy])
 
   return (
     <g ref={groupRef} className="opacity-0">
+      {/* Add a tail to the shooting star */}
+      <line
+        x1={cx}
+        y1={cy}
+        x2={cx - 10}
+        y2={cy - 10}
+        stroke="white"
+        strokeOpacity="0.2"
+        strokeWidth="0.5"
+      />
       <circle
         ref={ref}
         cx={cx}
@@ -126,67 +150,67 @@ function Star({
   )
 }
 
-function Constellation({
-  points,
-  blurId,
-}: {
-  points: Array<Star>
-  blurId: string
-}) {
-  let ref = useRef<React.ElementRef<'path'>>(null)
-  let uniquePoints = points.filter(
-    (point, pointIndex) =>
-      points.findIndex((p) => String(p) === String(point)) === pointIndex,
-  )
-  let isFilled = uniquePoints.length !== points.length
+// function Constellation({
+//   points,
+//   blurId,
+// }: {
+//   points: Array<Star>
+//   blurId: string
+// }) {
+//   let ref = useRef<React.ElementRef<'path'>>(null)
+//   let uniquePoints = points.filter(
+//     (point, pointIndex) =>
+//       points.findIndex((p) => String(p) === String(point)) === pointIndex,
+//   )
+//   let isFilled = uniquePoints.length !== points.length
 
-  useEffect(() => {
-    if (!ref.current) {
-      return
-    }
+//   useEffect(() => {
+//     if (!ref.current) {
+//       return
+//     }
 
-    let sequence: Array<TimelineSegment> = [
-      [
-        ref.current,
-        { strokeDashoffset: 0, visibility: 'visible' },
-        { duration: 5, delay: Math.random() * 3 + 2 },
-      ],
-    ]
+//     let sequence: Array<TimelineSegment> = [
+//       [
+//         ref.current,
+//         { strokeDashoffset: 0, visibility: 'visible' },
+//         { duration: 5, delay: Math.random() * 3 + 2 },
+//       ],
+//     ]
 
-    if (isFilled) {
-      sequence.push([
-        ref.current,
-        { fill: 'rgb(255 255 255 / 0.02)' },
-        { duration: 1 },
-      ])
-    }
+//     if (isFilled) {
+//       sequence.push([
+//         ref.current,
+//         { fill: 'rgb(255 255 255 / 0.02)' },
+//         { duration: 1 },
+//       ])
+//     }
 
-    let animation = timeline(sequence)
+//     let animation = timeline(sequence)
 
-    return () => {
-      animation.cancel()
-    }
-  }, [isFilled])
+//     return () => {
+//       animation.cancel()
+//     }
+//   }, [isFilled])
 
-  return (
-    <>
-      <path
-        ref={ref}
-        stroke="white"
-        strokeOpacity="0.2"
-        strokeDasharray={1}
-        strokeDashoffset={1}
-        pathLength={1}
-        fill="transparent"
-        d={`M ${points.join('L')}`}
-        className="invisible"
-      />
-      {uniquePoints.map((point, pointIndex) => (
-        <Star key={pointIndex} point={point} blurId={blurId} />
-      ))}
-    </>
-  )
-}
+//   return (
+//     <>
+//       <path
+//         ref={ref}
+//         stroke="white"
+//         strokeOpacity="0.2"
+//         strokeDasharray={1}
+//         strokeDashoffset={1}
+//         pathLength={1}
+//         fill="transparent"
+//         d={`M ${points.join('L')}`}
+//         className="invisible"
+//       />
+//       {uniquePoints.map((point, pointIndex) => (
+//         <Star key={pointIndex} point={point} blurId={blurId} />
+//       ))}
+//     </>
+//   )
+// }
 
 export function StarField({ className }: { className?: string }) {
   let blurId = useId()
@@ -197,7 +221,7 @@ export function StarField({ className }: { className?: string }) {
       fill="white"
       aria-hidden="true"
       className={clsx(
-        'pointer-events-none absolute w-[55.0625rem] origin-top-right rotate-[30deg] overflow-visible opacity-70',
+        'pointer-events-none absolute h-full w-[250w] origin-top-left rotate-[-20deg] overflow-visible opacity-70',
         className,
       )}
     >
@@ -206,13 +230,13 @@ export function StarField({ className }: { className?: string }) {
           <feGaussianBlur in="SourceGraphic" stdDeviation=".5" />
         </filter>
       </defs>
-      {constellations.map((points, constellationIndex) => (
+      {/* {constellations.map((points, constellationIndex) => (
         <Constellation
           key={constellationIndex}
           points={points}
           blurId={blurId}
         />
-      ))}
+      ))} */}
       {stars.map((point, pointIndex) => (
         <Star key={pointIndex} point={point} blurId={blurId} />
       ))}

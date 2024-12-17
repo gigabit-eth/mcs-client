@@ -4,12 +4,19 @@ import { Intro, IntroFooter } from '@/components/Intro'
 import { StarField } from '@/components/StarField'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { Timeline } from '@/components/Timeline'
-
+import Image from 'next/image'
 function Glow() {
   let id = useId()
 
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden bg-gray-950 lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem]">
+      <Image
+        src="/images/bg.png"
+        alt=""
+        className="absolute h-full w-full object-cover opacity-5"
+        width={900}
+        height={1080}
+      />
       <svg
         className="absolute -bottom-48 left-[-40%] h-[80rem] w-[180%] lg:-right-40 lg:bottom-auto lg:left-auto lg:top-[-40%] lg:h-[180%] lg:w-[80rem]"
         aria-hidden="true"
